@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "Ex1.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,13 +89,38 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  setTimer1(50);
+  int n = 0;
   while (1)
   {
+	if (timer1_flag==0 && n == 0){
+		control_7segment (0,1);
+		timer1_flag == 1;
+		n = 1;
+	}
+	if (timer1_flag==1 && n == 1){
+			control_7segment (1,2);
+			timer1_flag == 0;
+			n = 2;
+		}
+	if (timer1_flag==0 && n == 2){
+				control_7segment (0,2);
+				timer1_flag == 1;
+				n = 3;
+		}
+	if (timer1_flag==1 && n == 3){
+				control_7segment (1,1);
+				timer1_flag == 0;
+				n = 0;
+		}
+
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -222,7 +247,9 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+ timerRun();
+}
 /* USER CODE END 4 */
 
 /**

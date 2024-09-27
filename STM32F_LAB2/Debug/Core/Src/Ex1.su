@@ -1,0 +1,4 @@
+Ex1.c:14:6:setTimer1	16	static
+Ex1.c:19:6:timerRun	4	static
+Ex1.c:29:6:display7SEG	16	static
+Ex1.c:116:6:control_7segment	16	static
