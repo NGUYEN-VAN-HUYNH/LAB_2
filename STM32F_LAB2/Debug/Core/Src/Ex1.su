@@ -1,4 +1,6 @@
-Ex1.c:14:6:setTimer1	16	static
-Ex1.c:19:6:timerRun	4	static
-Ex1.c:29:6:display7SEG	16	static
-Ex1.c:116:6:control_7segment	16	static
+Ex1.c:15:6:setTimer1	16	static
+Ex1.c:20:6:timerRun	4	static
+Ex1.c:30:6:display7SEG	16	static
+Ex1.c:117:6:control_7segment	8	static
+Ex1.c:136:6:init_exercise1	4	static
+Ex1.c:139:6:exercise1_run	8	static

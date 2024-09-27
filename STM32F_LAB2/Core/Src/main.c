@@ -66,7 +66,7 @@ static void MX_TIM2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+ init_exercise1();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -95,29 +95,20 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer1(50);
-  int n = 0;
+  // tat het led truoc khi chay
+  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+
   while (1)
   {
-	if (timer1_flag==0 && n == 0){
-		control_7segment (0,1);
-		timer1_flag == 1;
-		n = 1;
+	if (timer1_flag == 1){
+		exercise1_run();
+		setTimer1(50);
+
 	}
-	if (timer1_flag==1 && n == 1){
-			control_7segment (1,2);
-			timer1_flag == 0;
-			n = 2;
-		}
-	if (timer1_flag==0 && n == 2){
-				control_7segment (0,2);
-				timer1_flag == 1;
-				n = 3;
-		}
-	if (timer1_flag==1 && n == 3){
-				control_7segment (1,1);
-				timer1_flag == 0;
-				n = 0;
-		}
+
+
+
 
 
 

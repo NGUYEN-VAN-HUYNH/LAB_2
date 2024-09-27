@@ -12,7 +12,9 @@
 void timerRun();
 void setTimer1(int duration);
 void display7SEG(int num);
-void control_7segment (int led, int num);
+void control_7segment ();
+void exercise1_run();
+void init_exercise1();
 extern int timer1_counter;
 extern int timer1_flag;
 extern int led_status;
