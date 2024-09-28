@@ -743,8 +743,8 @@ int main(void)
   int count = 0;
  80005b8:	2300      	movs	r3, #0
  80005ba:	607b      	str	r3, [r7, #4]
-  setTimer4(50);
- 80005bc:	2032      	movs	r0, #50	; 0x32
+  setTimer4(25);
+ 80005bc:	2019      	movs	r0, #25
  80005be:	f7ff ffa1 	bl	8000504 <setTimer4>
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
@@ -785,9 +785,9 @@ int main(void)
  8000604:	687b      	ldr	r3, [r7, #4]
  8000606:	3301      	adds	r3, #1
  8000608:	607b      	str	r3, [r7, #4]
-		if(count == 2){
+		if(count == 4){
  800060a:	687b      	ldr	r3, [r7, #4]
- 800060c:	2b02      	cmp	r3, #2
+ 800060c:	2b04      	cmp	r3, #4
  800060e:	d105      	bne.n	800061c <main+0x84>
 			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
  8000610:	2110      	movs	r1, #16
@@ -797,8 +797,8 @@ int main(void)
  8000618:	2300      	movs	r3, #0
  800061a:	607b      	str	r3, [r7, #4]
 		}
-		setTimer4(50);
- 800061c:	2032      	movs	r0, #50	; 0x32
+		setTimer4(25);
+ 800061c:	2019      	movs	r0, #25
  800061e:	f7ff ff71 	bl	8000504 <setTimer4>
 	if (timer4_flag == 1){
  8000622:	e7e9      	b.n	80005f8 <main+0x60>
