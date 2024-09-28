@@ -1,0 +1,5 @@
+Ex3.c:16:6:setTimer3	16	static
+Ex3.c:21:6:timerRun3	4	static
+Ex3.c:32:6:update7SEG	16	static
+Ex3.c:76:6:init_exercise3	4	static
+Ex3.c:79:6:exercise3_run	8	static
