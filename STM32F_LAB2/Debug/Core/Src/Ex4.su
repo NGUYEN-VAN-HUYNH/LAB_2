@@ -1,0 +1,4 @@
+Ex4.c:15:6:setTimer4	16	static
+Ex4.c:20:6:timerRun4	4	static
+Ex4.c:29:6:init_exercise4	4	static
+Ex4.c:32:6:exercise4_run	8	static

@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002001c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00008b37  00000000  00000000  00020045  2**0
+ 12 .debug_info   00008d7c  00000000  00000000  00020045  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000017b3  00000000  00000000  00028b7c  2**0
+ 13 .debug_abbrev 000018bb  00000000  00000000  00028dc1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000009b8  00000000  00000000  0002a330  2**3
+ 14 .debug_aranges 000009f0  00000000  00000000  0002a680  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000008f0  00000000  00000000  0002ace8  2**3
+ 15 .debug_ranges 00000918  00000000  00000000  0002b070  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00016610  00000000  00000000  0002b5d8  2**0
+ 16 .debug_macro  000167c8  00000000  00000000  0002b988  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000a176  00000000  00000000  00041be8  2**0
+ 17 .debug_line   0000a834  00000000  00000000  00042150  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082068  00000000  00000000  0004bd5e  2**0
+ 18 .debug_str    000820d2  00000000  00000000  0004c984  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000cddc6  2**0
+ 19 .comment      00000053  00000000  00000000  000cea56  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002758  00000000  00000000  000cde1c  2**2
+ 20 .debug_frame  000027ec  00000000  00000000  000ceaac  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -428,233 +428,235 @@ void display7SEG(int num) {
  80003d6:	bd80      	pop	{r7, pc}
  80003d8:	40010c00 	.word	0x40010c00
 
-080003dc <setTimer3>:
-int timer3_flag = 0;
-int timer3_counter = 0;
-int index_led = 0;
-const int MAX_LED = 4;
-int led_buffer [4] = {0 , 1 , 2 , 3};
-void setTimer3(int duration){
- 80003dc:	b480      	push	{r7}
- 80003de:	b083      	sub	sp, #12
- 80003e0:	af00      	add	r7, sp, #0
- 80003e2:	6078      	str	r0, [r7, #4]
-	timer3_counter = duration;
- 80003e4:	4a05      	ldr	r2, [pc, #20]	; (80003fc <setTimer3+0x20>)
- 80003e6:	687b      	ldr	r3, [r7, #4]
- 80003e8:	6013      	str	r3, [r2, #0]
-	timer3_flag = 0;
- 80003ea:	4b05      	ldr	r3, [pc, #20]	; (8000400 <setTimer3+0x24>)
- 80003ec:	2200      	movs	r2, #0
- 80003ee:	601a      	str	r2, [r3, #0]
-}
- 80003f0:	bf00      	nop
- 80003f2:	370c      	adds	r7, #12
- 80003f4:	46bd      	mov	sp, r7
- 80003f6:	bc80      	pop	{r7}
- 80003f8:	4770      	bx	lr
- 80003fa:	bf00      	nop
- 80003fc:	2000003c 	.word	0x2000003c
- 8000400:	20000038 	.word	0x20000038
-
-08000404 <timerRun3>:
-
-void timerRun3(){
- 8000404:	b480      	push	{r7}
- 8000406:	af00      	add	r7, sp, #0
-	if(timer3_counter > 0){
- 8000408:	4b09      	ldr	r3, [pc, #36]	; (8000430 <timerRun3+0x2c>)
- 800040a:	681b      	ldr	r3, [r3, #0]
- 800040c:	2b00      	cmp	r3, #0
- 800040e:	dd0b      	ble.n	8000428 <timerRun3+0x24>
-		timer3_counter --;
- 8000410:	4b07      	ldr	r3, [pc, #28]	; (8000430 <timerRun3+0x2c>)
- 8000412:	681b      	ldr	r3, [r3, #0]
- 8000414:	3b01      	subs	r3, #1
- 8000416:	4a06      	ldr	r2, [pc, #24]	; (8000430 <timerRun3+0x2c>)
- 8000418:	6013      	str	r3, [r2, #0]
-		if(timer3_counter <= 0){
- 800041a:	4b05      	ldr	r3, [pc, #20]	; (8000430 <timerRun3+0x2c>)
- 800041c:	681b      	ldr	r3, [r3, #0]
- 800041e:	2b00      	cmp	r3, #0
- 8000420:	dc02      	bgt.n	8000428 <timerRun3+0x24>
-			timer3_flag = 1;
- 8000422:	4b04      	ldr	r3, [pc, #16]	; (8000434 <timerRun3+0x30>)
- 8000424:	2201      	movs	r2, #1
- 8000426:	601a      	str	r2, [r3, #0]
-		}
+080003dc <update7SEG>:
 	}
 
 }
- 8000428:	bf00      	nop
- 800042a:	46bd      	mov	sp, r7
- 800042c:	bc80      	pop	{r7}
- 800042e:	4770      	bx	lr
- 8000430:	2000003c 	.word	0x2000003c
- 8000434:	20000038 	.word	0x20000038
-
-08000438 <update7SEG>:
 
 
 void update7SEG ( int index ) {
- 8000438:	b580      	push	{r7, lr}
- 800043a:	b082      	sub	sp, #8
- 800043c:	af00      	add	r7, sp, #0
- 800043e:	6078      	str	r0, [r7, #4]
+ 80003dc:	b580      	push	{r7, lr}
+ 80003de:	b082      	sub	sp, #8
+ 80003e0:	af00      	add	r7, sp, #0
+ 80003e2:	6078      	str	r0, [r7, #4]
 	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
- 8000440:	2120      	movs	r1, #32
- 8000442:	4845      	ldr	r0, [pc, #276]	; (8000558 <update7SEG+0x120>)
- 8000444:	f000 fd96 	bl	8000f74 <HAL_GPIO_TogglePin>
- 8000448:	687b      	ldr	r3, [r7, #4]
- 800044a:	2b03      	cmp	r3, #3
- 800044c:	d87e      	bhi.n	800054c <update7SEG+0x114>
- 800044e:	a201      	add	r2, pc, #4	; (adr r2, 8000454 <update7SEG+0x1c>)
- 8000450:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 8000454:	08000465 	.word	0x08000465
- 8000458:	0800049f 	.word	0x0800049f
- 800045c:	080004d9 	.word	0x080004d9
- 8000460:	08000513 	.word	0x08000513
+ 80003e4:	2120      	movs	r1, #32
+ 80003e6:	4845      	ldr	r0, [pc, #276]	; (80004fc <update7SEG+0x120>)
+ 80003e8:	f000 fdc4 	bl	8000f74 <HAL_GPIO_TogglePin>
+ 80003ec:	687b      	ldr	r3, [r7, #4]
+ 80003ee:	2b03      	cmp	r3, #3
+ 80003f0:	d87e      	bhi.n	80004f0 <update7SEG+0x114>
+ 80003f2:	a201      	add	r2, pc, #4	; (adr r2, 80003f8 <update7SEG+0x1c>)
+ 80003f4:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 80003f8:	08000409 	.word	0x08000409
+ 80003fc:	08000443 	.word	0x08000443
+ 8000400:	0800047d 	.word	0x0800047d
+ 8000404:	080004b7 	.word	0x080004b7
 switch ( index ) {
 	case 0:
 	// Display the first 7 SEG with led_buffer [0]
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
- 8000464:	2201      	movs	r2, #1
- 8000466:	2180      	movs	r1, #128	; 0x80
- 8000468:	483b      	ldr	r0, [pc, #236]	; (8000558 <update7SEG+0x120>)
- 800046a:	f000 fd6b 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000408:	2201      	movs	r2, #1
+ 800040a:	2180      	movs	r1, #128	; 0x80
+ 800040c:	483b      	ldr	r0, [pc, #236]	; (80004fc <update7SEG+0x120>)
+ 800040e:	f000 fd99 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
- 800046e:	2201      	movs	r2, #1
- 8000470:	f44f 7180 	mov.w	r1, #256	; 0x100
- 8000474:	4838      	ldr	r0, [pc, #224]	; (8000558 <update7SEG+0x120>)
- 8000476:	f000 fd65 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000412:	2201      	movs	r2, #1
+ 8000414:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 8000418:	4838      	ldr	r0, [pc, #224]	; (80004fc <update7SEG+0x120>)
+ 800041a:	f000 fd93 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
- 800047a:	2201      	movs	r2, #1
- 800047c:	f44f 7100 	mov.w	r1, #512	; 0x200
- 8000480:	4835      	ldr	r0, [pc, #212]	; (8000558 <update7SEG+0x120>)
- 8000482:	f000 fd5f 	bl	8000f44 <HAL_GPIO_WritePin>
+ 800041e:	2201      	movs	r2, #1
+ 8000420:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 8000424:	4835      	ldr	r0, [pc, #212]	; (80004fc <update7SEG+0x120>)
+ 8000426:	f000 fd8d 	bl	8000f44 <HAL_GPIO_WritePin>
 		index = led_buffer[0];
- 8000486:	4b35      	ldr	r3, [pc, #212]	; (800055c <update7SEG+0x124>)
- 8000488:	681b      	ldr	r3, [r3, #0]
- 800048a:	607b      	str	r3, [r7, #4]
+ 800042a:	4b35      	ldr	r3, [pc, #212]	; (8000500 <update7SEG+0x124>)
+ 800042c:	681b      	ldr	r3, [r3, #0]
+ 800042e:	607b      	str	r3, [r7, #4]
 		display7SEG(1);
- 800048c:	2001      	movs	r0, #1
- 800048e:	f7ff fe5d 	bl	800014c <display7SEG>
+ 8000430:	2001      	movs	r0, #1
+ 8000432:	f7ff fe8b 	bl	800014c <display7SEG>
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
- 8000492:	2200      	movs	r2, #0
- 8000494:	2140      	movs	r1, #64	; 0x40
- 8000496:	4830      	ldr	r0, [pc, #192]	; (8000558 <update7SEG+0x120>)
- 8000498:	f000 fd54 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000436:	2200      	movs	r2, #0
+ 8000438:	2140      	movs	r1, #64	; 0x40
+ 800043a:	4830      	ldr	r0, [pc, #192]	; (80004fc <update7SEG+0x120>)
+ 800043c:	f000 fd82 	bl	8000f44 <HAL_GPIO_WritePin>
 	break ;
- 800049c:	e057      	b.n	800054e <update7SEG+0x116>
+ 8000440:	e057      	b.n	80004f2 <update7SEG+0x116>
 	case 1:
 	// Display the second 7 SEG with led_buffer [1]
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
- 800049e:	2201      	movs	r2, #1
- 80004a0:	2140      	movs	r1, #64	; 0x40
- 80004a2:	482d      	ldr	r0, [pc, #180]	; (8000558 <update7SEG+0x120>)
- 80004a4:	f000 fd4e 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000442:	2201      	movs	r2, #1
+ 8000444:	2140      	movs	r1, #64	; 0x40
+ 8000446:	482d      	ldr	r0, [pc, #180]	; (80004fc <update7SEG+0x120>)
+ 8000448:	f000 fd7c 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
- 80004a8:	2201      	movs	r2, #1
- 80004aa:	f44f 7180 	mov.w	r1, #256	; 0x100
- 80004ae:	482a      	ldr	r0, [pc, #168]	; (8000558 <update7SEG+0x120>)
- 80004b0:	f000 fd48 	bl	8000f44 <HAL_GPIO_WritePin>
+ 800044c:	2201      	movs	r2, #1
+ 800044e:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 8000452:	482a      	ldr	r0, [pc, #168]	; (80004fc <update7SEG+0x120>)
+ 8000454:	f000 fd76 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
- 80004b4:	2201      	movs	r2, #1
- 80004b6:	f44f 7100 	mov.w	r1, #512	; 0x200
- 80004ba:	4827      	ldr	r0, [pc, #156]	; (8000558 <update7SEG+0x120>)
- 80004bc:	f000 fd42 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000458:	2201      	movs	r2, #1
+ 800045a:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 800045e:	4827      	ldr	r0, [pc, #156]	; (80004fc <update7SEG+0x120>)
+ 8000460:	f000 fd70 	bl	8000f44 <HAL_GPIO_WritePin>
 		index = led_buffer[1];
- 80004c0:	4b26      	ldr	r3, [pc, #152]	; (800055c <update7SEG+0x124>)
- 80004c2:	685b      	ldr	r3, [r3, #4]
- 80004c4:	607b      	str	r3, [r7, #4]
+ 8000464:	4b26      	ldr	r3, [pc, #152]	; (8000500 <update7SEG+0x124>)
+ 8000466:	685b      	ldr	r3, [r3, #4]
+ 8000468:	607b      	str	r3, [r7, #4]
 		display7SEG(2);
- 80004c6:	2002      	movs	r0, #2
- 80004c8:	f7ff fe40 	bl	800014c <display7SEG>
+ 800046a:	2002      	movs	r0, #2
+ 800046c:	f7ff fe6e 	bl	800014c <display7SEG>
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
- 80004cc:	2200      	movs	r2, #0
- 80004ce:	2180      	movs	r1, #128	; 0x80
- 80004d0:	4821      	ldr	r0, [pc, #132]	; (8000558 <update7SEG+0x120>)
- 80004d2:	f000 fd37 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000470:	2200      	movs	r2, #0
+ 8000472:	2180      	movs	r1, #128	; 0x80
+ 8000474:	4821      	ldr	r0, [pc, #132]	; (80004fc <update7SEG+0x120>)
+ 8000476:	f000 fd65 	bl	8000f44 <HAL_GPIO_WritePin>
 	break ;
- 80004d6:	e03a      	b.n	800054e <update7SEG+0x116>
+ 800047a:	e03a      	b.n	80004f2 <update7SEG+0x116>
 	case 2:
 	// Display the third 7 SEG with led_buffer [2]
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
- 80004d8:	2201      	movs	r2, #1
- 80004da:	2140      	movs	r1, #64	; 0x40
- 80004dc:	481e      	ldr	r0, [pc, #120]	; (8000558 <update7SEG+0x120>)
- 80004de:	f000 fd31 	bl	8000f44 <HAL_GPIO_WritePin>
+ 800047c:	2201      	movs	r2, #1
+ 800047e:	2140      	movs	r1, #64	; 0x40
+ 8000480:	481e      	ldr	r0, [pc, #120]	; (80004fc <update7SEG+0x120>)
+ 8000482:	f000 fd5f 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
- 80004e2:	2201      	movs	r2, #1
- 80004e4:	2180      	movs	r1, #128	; 0x80
- 80004e6:	481c      	ldr	r0, [pc, #112]	; (8000558 <update7SEG+0x120>)
- 80004e8:	f000 fd2c 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000486:	2201      	movs	r2, #1
+ 8000488:	2180      	movs	r1, #128	; 0x80
+ 800048a:	481c      	ldr	r0, [pc, #112]	; (80004fc <update7SEG+0x120>)
+ 800048c:	f000 fd5a 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
- 80004ec:	2201      	movs	r2, #1
- 80004ee:	f44f 7100 	mov.w	r1, #512	; 0x200
- 80004f2:	4819      	ldr	r0, [pc, #100]	; (8000558 <update7SEG+0x120>)
- 80004f4:	f000 fd26 	bl	8000f44 <HAL_GPIO_WritePin>
+ 8000490:	2201      	movs	r2, #1
+ 8000492:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 8000496:	4819      	ldr	r0, [pc, #100]	; (80004fc <update7SEG+0x120>)
+ 8000498:	f000 fd54 	bl	8000f44 <HAL_GPIO_WritePin>
 		display7SEG(3);
- 80004f8:	2003      	movs	r0, #3
- 80004fa:	f7ff fe27 	bl	800014c <display7SEG>
+ 800049c:	2003      	movs	r0, #3
+ 800049e:	f7ff fe55 	bl	800014c <display7SEG>
 		index = led_buffer[2];
- 80004fe:	4b17      	ldr	r3, [pc, #92]	; (800055c <update7SEG+0x124>)
- 8000500:	689b      	ldr	r3, [r3, #8]
- 8000502:	607b      	str	r3, [r7, #4]
+ 80004a2:	4b17      	ldr	r3, [pc, #92]	; (8000500 <update7SEG+0x124>)
+ 80004a4:	689b      	ldr	r3, [r3, #8]
+ 80004a6:	607b      	str	r3, [r7, #4]
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_RESET);
- 8000504:	2200      	movs	r2, #0
- 8000506:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800050a:	4813      	ldr	r0, [pc, #76]	; (8000558 <update7SEG+0x120>)
- 800050c:	f000 fd1a 	bl	8000f44 <HAL_GPIO_WritePin>
+ 80004a8:	2200      	movs	r2, #0
+ 80004aa:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 80004ae:	4813      	ldr	r0, [pc, #76]	; (80004fc <update7SEG+0x120>)
+ 80004b0:	f000 fd48 	bl	8000f44 <HAL_GPIO_WritePin>
 	break ;
- 8000510:	e01d      	b.n	800054e <update7SEG+0x116>
+ 80004b4:	e01d      	b.n	80004f2 <update7SEG+0x116>
 	case 3:
 	// Display the forth 7 SEG with led_buffer [3]
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
- 8000512:	2201      	movs	r2, #1
- 8000514:	2140      	movs	r1, #64	; 0x40
- 8000516:	4810      	ldr	r0, [pc, #64]	; (8000558 <update7SEG+0x120>)
- 8000518:	f000 fd14 	bl	8000f44 <HAL_GPIO_WritePin>
+ 80004b6:	2201      	movs	r2, #1
+ 80004b8:	2140      	movs	r1, #64	; 0x40
+ 80004ba:	4810      	ldr	r0, [pc, #64]	; (80004fc <update7SEG+0x120>)
+ 80004bc:	f000 fd42 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
- 800051c:	2201      	movs	r2, #1
- 800051e:	2180      	movs	r1, #128	; 0x80
- 8000520:	480d      	ldr	r0, [pc, #52]	; (8000558 <update7SEG+0x120>)
- 8000522:	f000 fd0f 	bl	8000f44 <HAL_GPIO_WritePin>
+ 80004c0:	2201      	movs	r2, #1
+ 80004c2:	2180      	movs	r1, #128	; 0x80
+ 80004c4:	480d      	ldr	r0, [pc, #52]	; (80004fc <update7SEG+0x120>)
+ 80004c6:	f000 fd3d 	bl	8000f44 <HAL_GPIO_WritePin>
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
- 8000526:	2201      	movs	r2, #1
- 8000528:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800052c:	480a      	ldr	r0, [pc, #40]	; (8000558 <update7SEG+0x120>)
- 800052e:	f000 fd09 	bl	8000f44 <HAL_GPIO_WritePin>
+ 80004ca:	2201      	movs	r2, #1
+ 80004cc:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 80004d0:	480a      	ldr	r0, [pc, #40]	; (80004fc <update7SEG+0x120>)
+ 80004d2:	f000 fd37 	bl	8000f44 <HAL_GPIO_WritePin>
 		index = led_buffer[3]; // bat dau lai led 1
- 8000532:	4b0a      	ldr	r3, [pc, #40]	; (800055c <update7SEG+0x124>)
- 8000534:	68db      	ldr	r3, [r3, #12]
- 8000536:	607b      	str	r3, [r7, #4]
+ 80004d6:	4b0a      	ldr	r3, [pc, #40]	; (8000500 <update7SEG+0x124>)
+ 80004d8:	68db      	ldr	r3, [r3, #12]
+ 80004da:	607b      	str	r3, [r7, #4]
 		display7SEG(0);
- 8000538:	2000      	movs	r0, #0
- 800053a:	f7ff fe07 	bl	800014c <display7SEG>
+ 80004dc:	2000      	movs	r0, #0
+ 80004de:	f7ff fe35 	bl	800014c <display7SEG>
 		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_RESET);
- 800053e:	2200      	movs	r2, #0
- 8000540:	f44f 7100 	mov.w	r1, #512	; 0x200
- 8000544:	4804      	ldr	r0, [pc, #16]	; (8000558 <update7SEG+0x120>)
- 8000546:	f000 fcfd 	bl	8000f44 <HAL_GPIO_WritePin>
+ 80004e2:	2200      	movs	r2, #0
+ 80004e4:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 80004e8:	4804      	ldr	r0, [pc, #16]	; (80004fc <update7SEG+0x120>)
+ 80004ea:	f000 fd2b 	bl	8000f44 <HAL_GPIO_WritePin>
 	break ;
- 800054a:	e000      	b.n	800054e <update7SEG+0x116>
+ 80004ee:	e000      	b.n	80004f2 <update7SEG+0x116>
 	default :
 	break ;
- 800054c:	bf00      	nop
+ 80004f0:	bf00      	nop
 	}
  }
- 800054e:	bf00      	nop
- 8000550:	3708      	adds	r7, #8
+ 80004f2:	bf00      	nop
+ 80004f4:	3708      	adds	r7, #8
+ 80004f6:	46bd      	mov	sp, r7
+ 80004f8:	bd80      	pop	{r7, pc}
+ 80004fa:	bf00      	nop
+ 80004fc:	40010800 	.word	0x40010800
+ 8000500:	20000000 	.word	0x20000000
+
+08000504 <setTimer4>:
+int timer4_flag = 0;
+int timer4_counter = 0;
+extern int index_led;
+extern const int MAX_LED;
+extern int led_buffer [4];
+void setTimer4(int duration){
+ 8000504:	b480      	push	{r7}
+ 8000506:	b083      	sub	sp, #12
+ 8000508:	af00      	add	r7, sp, #0
+ 800050a:	6078      	str	r0, [r7, #4]
+	timer4_counter = duration;
+ 800050c:	4a05      	ldr	r2, [pc, #20]	; (8000524 <setTimer4+0x20>)
+ 800050e:	687b      	ldr	r3, [r7, #4]
+ 8000510:	6013      	str	r3, [r2, #0]
+	timer4_flag = 0;
+ 8000512:	4b05      	ldr	r3, [pc, #20]	; (8000528 <setTimer4+0x24>)
+ 8000514:	2200      	movs	r2, #0
+ 8000516:	601a      	str	r2, [r3, #0]
+}
+ 8000518:	bf00      	nop
+ 800051a:	370c      	adds	r7, #12
+ 800051c:	46bd      	mov	sp, r7
+ 800051e:	bc80      	pop	{r7}
+ 8000520:	4770      	bx	lr
+ 8000522:	bf00      	nop
+ 8000524:	20000040 	.word	0x20000040
+ 8000528:	2000003c 	.word	0x2000003c
+
+0800052c <timerRun4>:
+
+void timerRun4(){
+ 800052c:	b480      	push	{r7}
+ 800052e:	af00      	add	r7, sp, #0
+	if(timer4_counter > 0){
+ 8000530:	4b09      	ldr	r3, [pc, #36]	; (8000558 <timerRun4+0x2c>)
+ 8000532:	681b      	ldr	r3, [r3, #0]
+ 8000534:	2b00      	cmp	r3, #0
+ 8000536:	dd0b      	ble.n	8000550 <timerRun4+0x24>
+		timer4_counter --;
+ 8000538:	4b07      	ldr	r3, [pc, #28]	; (8000558 <timerRun4+0x2c>)
+ 800053a:	681b      	ldr	r3, [r3, #0]
+ 800053c:	3b01      	subs	r3, #1
+ 800053e:	4a06      	ldr	r2, [pc, #24]	; (8000558 <timerRun4+0x2c>)
+ 8000540:	6013      	str	r3, [r2, #0]
+		if(timer4_counter <= 0){
+ 8000542:	4b05      	ldr	r3, [pc, #20]	; (8000558 <timerRun4+0x2c>)
+ 8000544:	681b      	ldr	r3, [r3, #0]
+ 8000546:	2b00      	cmp	r3, #0
+ 8000548:	dc02      	bgt.n	8000550 <timerRun4+0x24>
+			timer4_flag = 1;
+ 800054a:	4b04      	ldr	r3, [pc, #16]	; (800055c <timerRun4+0x30>)
+ 800054c:	2201      	movs	r2, #1
+ 800054e:	601a      	str	r2, [r3, #0]
+		}
+	}
+
+}
+ 8000550:	bf00      	nop
  8000552:	46bd      	mov	sp, r7
- 8000554:	bd80      	pop	{r7, pc}
- 8000556:	bf00      	nop
- 8000558:	40010800 	.word	0x40010800
- 800055c:	20000000 	.word	0x20000000
+ 8000554:	bc80      	pop	{r7}
+ 8000556:	4770      	bx	lr
+ 8000558:	20000040 	.word	0x20000040
+ 800055c:	2000003c 	.word	0x2000003c
 
-08000560 <init_exercise3>:
-
-void init_exercise3(){
+08000560 <init_exercise4>:
+void init_exercise4(){
  8000560:	b480      	push	{r7}
  8000562:	af00      	add	r7, sp, #0
 
@@ -664,35 +666,35 @@ void init_exercise3(){
  8000568:	bc80      	pop	{r7}
  800056a:	4770      	bx	lr
 
-0800056c <exercise3_run>:
-void exercise3_run(){
+0800056c <exercise4_run>:
+void exercise4_run(){
  800056c:	b580      	push	{r7, lr}
  800056e:	af00      	add	r7, sp, #0
 	if(index_led <= 3)
- 8000570:	4b08      	ldr	r3, [pc, #32]	; (8000594 <exercise3_run+0x28>)
+ 8000570:	4b08      	ldr	r3, [pc, #32]	; (8000594 <exercise4_run+0x28>)
  8000572:	681b      	ldr	r3, [r3, #0]
  8000574:	2b03      	cmp	r3, #3
- 8000576:	dc08      	bgt.n	800058a <exercise3_run+0x1e>
+ 8000576:	dc08      	bgt.n	800058a <exercise4_run+0x1e>
 	update7SEG(index_led++);
- 8000578:	4b06      	ldr	r3, [pc, #24]	; (8000594 <exercise3_run+0x28>)
+ 8000578:	4b06      	ldr	r3, [pc, #24]	; (8000594 <exercise4_run+0x28>)
  800057a:	681b      	ldr	r3, [r3, #0]
  800057c:	1c5a      	adds	r2, r3, #1
- 800057e:	4905      	ldr	r1, [pc, #20]	; (8000594 <exercise3_run+0x28>)
+ 800057e:	4905      	ldr	r1, [pc, #20]	; (8000594 <exercise4_run+0x28>)
  8000580:	600a      	str	r2, [r1, #0]
  8000582:	4618      	mov	r0, r3
- 8000584:	f7ff ff58 	bl	8000438 <update7SEG>
+ 8000584:	f7ff ff2a 	bl	80003dc <update7SEG>
 	else
 		index_led = 0;
 }
- 8000588:	e002      	b.n	8000590 <exercise3_run+0x24>
+ 8000588:	e002      	b.n	8000590 <exercise4_run+0x24>
 		index_led = 0;
- 800058a:	4b02      	ldr	r3, [pc, #8]	; (8000594 <exercise3_run+0x28>)
+ 800058a:	4b02      	ldr	r3, [pc, #8]	; (8000594 <exercise4_run+0x28>)
  800058c:	2200      	movs	r2, #0
  800058e:	601a      	str	r2, [r3, #0]
 }
  8000590:	bf00      	nop
  8000592:	bd80      	pop	{r7, pc}
- 8000594:	20000040 	.word	0x20000040
+ 8000594:	20000038 	.word	0x20000038
 
 08000598 <main>:
 /**
@@ -705,8 +707,8 @@ int main(void)
  800059a:	b082      	sub	sp, #8
  800059c:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN 1 */
- init_exercise3();
- 800059e:	f7ff ffdf 	bl	8000560 <init_exercise3>
+ init_exercise4();
+ 800059e:	f7ff ffdf 	bl	8000560 <init_exercise4>
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -741,9 +743,9 @@ int main(void)
   int count = 0;
  80005b8:	2300      	movs	r3, #0
  80005ba:	607b      	str	r3, [r7, #4]
-  setTimer3(50);
+  setTimer4(50);
  80005bc:	2032      	movs	r0, #50	; 0x32
- 80005be:	f7ff ff0d 	bl	80003dc <setTimer3>
+ 80005be:	f7ff ffa1 	bl	8000504 <setTimer4>
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
  80005c2:	2201      	movs	r2, #1
@@ -772,13 +774,13 @@ int main(void)
  80005f4:	f000 fca6 	bl	8000f44 <HAL_GPIO_WritePin>
   while (1)
   {
-	if (timer3_flag == 1){
+	if (timer4_flag == 1){
  80005f8:	4b0c      	ldr	r3, [pc, #48]	; (800062c <main+0x94>)
  80005fa:	681b      	ldr	r3, [r3, #0]
  80005fc:	2b01      	cmp	r3, #1
  80005fe:	d1fb      	bne.n	80005f8 <main+0x60>
-		exercise3_run();
- 8000600:	f7ff ffb4 	bl	800056c <exercise3_run>
+		exercise4_run();
+ 8000600:	f7ff ffb4 	bl	800056c <exercise4_run>
 		count ++;
  8000604:	687b      	ldr	r3, [r7, #4]
  8000606:	3301      	adds	r3, #1
@@ -795,14 +797,14 @@ int main(void)
  8000618:	2300      	movs	r3, #0
  800061a:	607b      	str	r3, [r7, #4]
 		}
-		setTimer3(50);
+		setTimer4(50);
  800061c:	2032      	movs	r0, #50	; 0x32
- 800061e:	f7ff fedd 	bl	80003dc <setTimer3>
-	if (timer3_flag == 1){
+ 800061e:	f7ff ff71 	bl	8000504 <setTimer4>
+	if (timer4_flag == 1){
  8000622:	e7e9      	b.n	80005f8 <main+0x60>
  8000624:	20000044 	.word	0x20000044
  8000628:	40010800 	.word	0x40010800
- 800062c:	20000038 	.word	0x20000038
+ 800062c:	2000003c 	.word	0x2000003c
 
 08000630 <SystemClock_Config>:
 /**
@@ -1119,8 +1121,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
  80007ea:	b082      	sub	sp, #8
  80007ec:	af00      	add	r7, sp, #0
  80007ee:	6078      	str	r0, [r7, #4]
- timerRun3();
- 80007f0:	f7ff fe08 	bl	8000404 <timerRun3>
+ timerRun4();
+ 80007f0:	f7ff fe9c 	bl	800052c <timerRun4>
 }
  80007f4:	bf00      	nop
  80007f6:	3708      	adds	r7, #8
