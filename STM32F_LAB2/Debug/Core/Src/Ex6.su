@@ -1,0 +1,4 @@
+Ex6.c:12:6:setTimer0	16	static
+Ex6.c:16:6:timerRun0	4	static
+Ex6.c:24:6:exercise6_run	8	static
+Ex6.c:27:6:init_exercise6	4	static
