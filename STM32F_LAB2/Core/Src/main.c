@@ -94,7 +94,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer9(100);
+  setTimer9(1);
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
@@ -106,7 +106,7 @@ int main(void)
   {
 	if (timer9_flag == 1){
 		exercise9_run();
-		setTimer9(100);
+		setTimer9(1);
 
 	}
 

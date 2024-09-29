@@ -1,5 +1,5 @@
 Ex9.c:26:6:setTimer9	16	static
 Ex9.c:31:6:timerRun9	4	static
 Ex9.c:40:6:updateLEDMatrix	16	static
-Ex9.c:131:6:init_exercise9	4	static
-Ex9.c:134:6:exercise9_run	8	static
+Ex9.c:139:6:init_exercise9	4	static
+Ex9.c:144:6:exercise9_run	8	static
