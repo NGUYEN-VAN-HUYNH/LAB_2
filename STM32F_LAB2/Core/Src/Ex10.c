@@ -4,7 +4,7 @@
  *  Created on: Sep 29, 2024
  *      Author: Admin
  */
-
+#include "main.h"
 #include "Ex10.h"
 extern const int MAX_LED_MATRIX; // Ma trận LED 8x8
 extern int index_led_matrix; // Chỉ số LED đang hiển thị
