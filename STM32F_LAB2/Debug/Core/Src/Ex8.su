@@ -1,0 +1,4 @@
+Ex8.c:15:6:setTimer8	16	static
+Ex8.c:20:6:timerRun8	4	static
+Ex8.c:32:6:init_exercise8	4	static
+Ex8.c:35:6:exercise8_run	8	static

@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Ex7.h"
+#include "Ex8.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,7 +66,7 @@ static void MX_TIM2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
- init_exercise7();
+ init_exercise8();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -94,7 +94,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer7(100);
+  setTimer8(100);
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
@@ -104,10 +104,10 @@ int main(void)
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
   while (1)
   {
-	if (timer7_flag == 1){
+	if (timer8_flag == 1){
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		exercise7_run();
-		setTimer7(100);
+		exercise8_run();
+		setTimer8(100);
 
 	}
 
@@ -246,7 +246,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
- timerRun7();
+ timerRun8();
 }
 /* USER CODE END 4 */
 
