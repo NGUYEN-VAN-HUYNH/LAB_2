@@ -13,6 +13,7 @@ C_SRCS += \
 ../Core/Src/Ex6.c \
 ../Core/Src/Ex7.c \
 ../Core/Src/Ex8.c \
+../Core/Src/Ex9.c \
 ../Core/Src/main.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
@@ -29,6 +30,7 @@ C_DEPS += \
 ./Core/Src/Ex6.d \
 ./Core/Src/Ex7.d \
 ./Core/Src/Ex8.d \
+./Core/Src/Ex9.d \
 ./Core/Src/main.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
@@ -45,6 +47,7 @@ OBJS += \
 ./Core/Src/Ex6.o \
 ./Core/Src/Ex7.o \
 ./Core/Src/Ex8.o \
+./Core/Src/Ex9.o \
 ./Core/Src/main.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
