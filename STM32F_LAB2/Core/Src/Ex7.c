@@ -1,65 +1,36 @@
 /*
- * Ex5.c
+ * Ex7.c
  *
- *  Created on: Sep 28, 2024
+ *  Created on: Sep 29, 2024
  *      Author: Admin
  */
-
 #include "main.h"
 #include "Ex5.h"
-int timer5_flag = 0;
-int timer5_counter = 0;
+int timer7_flag = 0;
+int timer7_counter = 0;
 extern int index_led;
 extern const int MAX_LED;
 extern int led_buffer[4];
-int hour = 15 , minute = 8 , second = 50;
-void setTimer5(int duration){
-	timer5_counter = duration;
-	timer5_flag = 0;
+extern int hour, minute, second;
+void setTimer7(int duration){
+	timer7_counter = duration;
+	timer7_flag = 0;
 }
 
-void timerRun5(){
-	if(timer5_counter > 0){
-		timer5_counter --;
-		if(timer5_counter <= 0){
-			timer5_flag = 1;
+void timerRun7(){
+	if(timer7_counter > 0){
+		timer7_counter --;
+		if(timer7_counter <= 0){
+			timer7_flag = 1;
 		}
 	}
 
 }
 
-void updateClockBuffer(int hour, int minute) {
-    // Update the hour display
-    led_buffer[0] = hour / 10;  // Tens digit of the hour
-    led_buffer[1] = hour % 10;  // Units digit of the hour
-
-    // Update the minute display
-    led_buffer[2] = minute / 10;  // Tens digit of the minute
-    led_buffer[3] = minute % 10;  // Units digit of the minute
-}
-
-
-
-void control_time(){
-	 second ++;
-	 if ( second >= 60) {
-	 second = 0;
-	 minute ++;
-	 }
-	 if( minute >= 60) {
-	 minute = 0;
-	 hour ++;
-	 }
-	 if( hour >=24) {
-	 hour = 0;
-	 }
-	 updateClockBuffer(hour, minute) ;
- }
-
-void init_exercise5(){
+void init_exercise7(){
 
 }
-void exercise5_run(){
+void exercise7_run(){
 	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	control_time();
       switch(index_led) {
@@ -98,4 +69,6 @@ void exercise5_run(){
 
 
 }
+
+
 
