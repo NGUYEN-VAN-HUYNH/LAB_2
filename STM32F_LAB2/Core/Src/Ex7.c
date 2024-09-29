@@ -5,7 +5,7 @@
  *      Author: Admin
  */
 #include "main.h"
-#include "Ex5.h"
+#include "Ex7.h"
 int timer7_flag = 0;
 int timer7_counter = 0;
 extern int index_led;
