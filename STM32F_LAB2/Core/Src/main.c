@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Ex9.h"
+#include "Ex10.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,7 +66,7 @@ static void MX_TIM2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
- init_exercise9();
+ init_exercise10();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -94,7 +94,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer9(1);
+  setTimer10(1);
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
@@ -102,11 +102,28 @@ int main(void)
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+  int counter = 1000;
   while (1)
   {
-	if (timer9_flag == 1){
-		exercise9_run();
-		setTimer9(1);
+	if (timer10_flag == 1){
+		exercise10_run();
+		counter--;
+		if(800 < counter && counter <= 1000){
+			H(index_led_matrix);
+		}
+		else if(600 < counter && counter <= 800)
+			C(index_led_matrix);
+		else if(400 < counter && counter <= 600)
+			M(index_led_matrix);
+		else if(200 < counter && counter <= 400)
+			U(index_led_matrix);
+		else if(0 < counter && counter <= 200)
+			T(index_led_matrix);
+		else if (counter == 0) {
+			counter = 1000;
+		}
+		index_led_matrix = (index_led_matrix + 1) % MAX_LED_MATRIX;
+		setTimer10(1);
 
 	}
 
@@ -257,7 +274,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
- timerRun9();
+ timerRun10();
 }
 /* USER CODE END 4 */
 

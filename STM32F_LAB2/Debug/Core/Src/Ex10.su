@@ -1,0 +1,9 @@
+Ex10.c:15:6:setTimer10	16	static
+Ex10.c:20:6:timerRun10	4	static
+Ex10.c:29:6:H	16	static
+Ex10.c:128:6:C	16	static
+Ex10.c:229:6:M	16	static
+Ex10.c:326:6:U	16	static
+Ex10.c:424:6:T	16	static
+Ex10.c:522:6:init_exercise10	4	static
+Ex10.c:527:6:exercise10_run	4	static
