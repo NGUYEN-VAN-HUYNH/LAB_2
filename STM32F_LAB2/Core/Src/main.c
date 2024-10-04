@@ -102,13 +102,17 @@ int main(void)
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+  int count = 4;
   while (1)
   {
 	if (timer5_flag == 1){
 		exercise5_run();
+		count --;
+		if(count == 0){
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		count = 4;
+	 }
 		setTimer5(25);
-
 	}
 
 
