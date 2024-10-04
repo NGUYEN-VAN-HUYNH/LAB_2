@@ -26,17 +26,47 @@ void timerRun8(){
 	}
 
 }
-
-extern void update7SEG ( int index );
-
+extern void control_time();
+extern void updateClockBuffer(int hour, int minute);
 void init_exercise8(){
 
 }
 void exercise8_run(){
-	if(index_led <= 3)
-	update7SEG(index_led++);
-	else
-		index_led = 0;
+	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		//control_time();
+	      switch(index_led) {
+	          case 0:
+	              HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);  // Enable LED 0
+	              HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+	              HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
+	              HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+	              display7SEG(led_buffer[0]);  // Display tens digit of the hour
+	              break;
+	          case 1:
+	              HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+	              HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET); // Enable LED 1
+	              HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
+	              HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+	              display7SEG(led_buffer[1]);  // Display units digit of the hour
+	              break;
+	          case 2:
+				  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+				  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+				  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_RESET); // Enable LED 2
+				  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+				  display7SEG(led_buffer[2]);  // Display tens digit of the minute
+	              break;
+	          case 3:
+				 HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+				 HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+				 HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
+				 HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_RESET); // Enable LED 3
+	             display7SEG(led_buffer[3]);  // Display units digit of the minute
+	              break;
+	      }
+
+	      // Move to the next LED in the sequence (cycle through 0, 1, 2, 3)
+	      index_led = (index_led + 1) % MAX_LED;
 }
 
 
