@@ -94,8 +94,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int count = 0;
-  setTimer8(50);
+
+  setTimer8(25);
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
@@ -103,18 +103,20 @@ int main(void)
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-  while (1)
-  {
-	if (timer8_flag == 1){
-		count++;
-		if(count >=2){
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin); // DOT nhap nhay 1s
-		count = 0;
-		}
-		exercise8_run();
-		setTimer8(50);
+  int count = 4;
+   while (1)
+   {
+ 	if (timer8_flag == 1){
+ 		exercise8_run();
+ 		count --;
+ 		if(count == 0){
+ 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+ 		control_time();
+ 		count = 4;
+ 	 }
+ 		setTimer8(25);
+ 	}
 
-	}
 
 
 

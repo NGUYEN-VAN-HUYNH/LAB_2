@@ -12,7 +12,7 @@ int timer3_flag = 0;
 int timer3_counter = 0;
 int index_led = 0;
 const int MAX_LED = 4;
-int led_buffer [4] = {0 , 1 , 2 , 3};
+int led_buffer [4] = {1 , 5 , 0 , 8};
 void setTimer3(int duration){
 	timer3_counter = duration;
 	timer3_flag = 0;
