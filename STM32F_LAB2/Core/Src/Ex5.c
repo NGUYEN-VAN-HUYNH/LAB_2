@@ -61,7 +61,7 @@ void init_exercise5(){
 }
 void exercise5_run(){
 	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	control_time();
+	//control_time();
 	//Update the current 7-segment display
 //	display7SEG(led_buffer[index_led]);
 //

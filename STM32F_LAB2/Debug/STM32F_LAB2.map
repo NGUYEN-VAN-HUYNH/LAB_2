@@ -2677,10 +2677,10 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000000800051c        0xc ./Core/Src/Ex5.o
                 0x000000000800051c                init_exercise5
  .text.exercise5_run
-                0x0000000008000528      0x13c ./Core/Src/Ex5.o
+                0x0000000008000528      0x138 ./Core/Src/Ex5.o
                 0x0000000008000528                exercise5_run
- .text.main     0x0000000008000664       0xa4 ./Core/Src/main.o
-                0x0000000008000664                main
+ .text.main     0x0000000008000660       0xa8 ./Core/Src/main.o
+                0x0000000008000660                main
  .text.SystemClock_Config
                 0x0000000008000708       0x76 ./Core/Src/main.o
                 0x0000000008000708                SystemClock_Config
@@ -3227,8 +3227,8 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 .debug_line     0x0000000000000000     0xa8bd
  .debug_line    0x0000000000000000      0x742 ./Core/Src/Ex1.o
  .debug_line    0x0000000000000742      0x713 ./Core/Src/Ex3.o
- .debug_line    0x0000000000000e55      0x748 ./Core/Src/Ex5.o
- .debug_line    0x000000000000159d      0x799 ./Core/Src/main.o
+ .debug_line    0x0000000000000e55      0x747 ./Core/Src/Ex5.o
+ .debug_line    0x000000000000159c      0x79a ./Core/Src/main.o
  .debug_line    0x0000000000001d36      0x6a1 ./Core/Src/stm32f1xx_hal_msp.o
  .debug_line    0x00000000000023d7      0x73f ./Core/Src/stm32f1xx_it.o
  .debug_line    0x0000000000002b16      0x6e3 ./Core/Src/system_stm32f1xx.o

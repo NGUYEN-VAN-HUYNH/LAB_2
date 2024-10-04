@@ -110,6 +110,7 @@ int main(void)
 		count --;
 		if(count == 0){
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		control_time();
 		count = 4;
 	 }
 		setTimer5(25);
