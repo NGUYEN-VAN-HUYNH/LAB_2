@@ -847,8 +847,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer5(10);
- 8000682:	200a      	movs	r0, #10
+  setTimer5(100);
+ 8000682:	2064      	movs	r0, #100	; 0x64
  8000684:	f7ff feaa 	bl	80003dc <setTimer5>
   // tat het led truoc khi chay
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
@@ -894,8 +894,8 @@ int main(void)
  80006d4:	2110      	movs	r1, #16
  80006d6:	4804      	ldr	r0, [pc, #16]	; (80006e8 <main+0x84>)
  80006d8:	f000 fcac 	bl	8001034 <HAL_GPIO_TogglePin>
-		setTimer5(10);
- 80006dc:	200a      	movs	r0, #10
+		setTimer5(100);
+ 80006dc:	2064      	movs	r0, #100	; 0x64
  80006de:	f7ff fe7d 	bl	80003dc <setTimer5>
 	if (timer5_flag == 1){
  80006e2:	e7f1      	b.n	80006c8 <main+0x64>
