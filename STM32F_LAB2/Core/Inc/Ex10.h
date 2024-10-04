@@ -20,6 +20,9 @@ void C(int index);
 void M(int index);
 void U(int index);
 void T(int index);
+void timerRun10();
+void setTimer10();
+
 
 
 #endif /* INC_EX10_H_ */
